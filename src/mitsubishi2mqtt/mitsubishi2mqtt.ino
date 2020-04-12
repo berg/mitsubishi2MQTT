@@ -1259,13 +1259,14 @@ String hpGetMode() {
 
 String hpGetAction() {
   heatpumpSettings currentSettings = hp.getSettings();
+  heatpumpStatus currentStatus = hp.getStatus();
   String hppower = String(currentSettings.power);
   String hpmode = String(currentSettings.mode);
   hppower.toLowerCase();
   hpmode.toLowerCase();
   String result = "idle";
   if (hppower == "off") result = "off";
-  else {
+  else if (currentStatus.operating) {
     if (hpmode == "auto") result = "auto";
     //        if (currentStatus.roomTemperature > currentSettings.temperature) result = "cooling"
     //        else result = "heating";
