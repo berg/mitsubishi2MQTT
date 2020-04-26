@@ -1326,7 +1326,8 @@ void hpPacketDebug(byte* packet, unsigned int length, const char* packetDirectio
 
 // Used to send a dummy packet in state topic to validate action in HA interface
 void hpSendDummy(String name, String value, String name2, String value2) {
-
+  // This behavior is actually kinda annoying.
+  /*
   //For sending dummy state packet
   const size_t bufferSizeInfo = JSON_OBJECT_SIZE(12);
   StaticJsonDocument<bufferSizeInfo> rootInfo;
@@ -1346,6 +1347,7 @@ void hpSendDummy(String name, String value, String name2, String value2) {
   if (!mqtt_client.publish_P(ha_state_topic.c_str(), mqttOutput.c_str(), false)) {
     if (_debugMode) mqtt_client.publish(ha_debug_topic.c_str(), (char*)("Failed to publish dummy hp status change"));
   }
+  */
   // Restart counter for waiting enought time for the unit to update before sending a state packet
   lastTempSend = millis();
 }
